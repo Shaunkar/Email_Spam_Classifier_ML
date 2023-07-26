@@ -17,7 +17,7 @@ click==8.1.6
 cmake==3.26.4
 colorama==0.4.6
 comm==0.1.3
-conda==23.1.0
+conda==4.3.16
 conda-package-handling @ file:///croot/conda-package-handling_1672865015732/work
 conda_package_streaming @ file:///croot/conda-package-streaming_1670508151586/work
 contourpy==1.1.0
