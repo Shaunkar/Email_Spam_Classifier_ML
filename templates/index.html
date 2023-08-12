@@ -6,46 +6,79 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1627403603574-8dd7f34a8390');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         h1 {
             color: indigo;
+            margin-bottom: 20px;
+        }
+        .input-area {
+            margin-bottom: 20px;
         }
         button {
             background-color: indigo;
-            color: whitesmoke;
+            color: white;
             border: none;
             padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
         }
         textarea {
             width: 100%;
-            height: 300px;
+            height: 200px;
             padding: 10px;
             border: 1px solid #ccc;
+            border-radius: 5px;
             resize: vertical;
+            font-size: 14px;
         }
         .result {
             margin-top: 20px;
-            font-size: 1.2em;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .reset-link {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <h1>Email Spam Classifier</h1>
-    <form method="POST" action="/predict">
-        <textarea name="content" placeholder="Enter Your Email Body">{{ email_text }}</textarea>
-        <div>
-            <button>Check Spam</button>
-            <a href="/" style="margin-left: 20px;">Reset</a>
-        </div>
-    </form>
+    <div class="container">
+        <h1>Email Spam Classifier</h1>
+        <form method="POST" action="/predict">
+            <div class="input-area">
+                <textarea name="content" placeholder="Paste or type your email here...">{{ email_text }}</textarea>
+            </div>
+            <div>
+                <button>Check Spam</button>
+                <a href="/" class="reset-link">Reset</a>
+            </div>
+        </form>
 
-    <div class="result">
-        {% if predictions == 1 %}
-            <p style="color: red;">This email is classified as <strong>SPAM</strong>.</p>
-        {% elif predictions == -1 %}
-            <p style="color: green;">This email is classified as <strong>NOT SPAM</strong>.</p>
-        {% endif %}
+        <div class="result">
+            {% if predictions == 1 %}
+                <p style="color: red;">This email is classified as <strong>SPAM</strong>.</p>
+            {% elif predictions == -1 %}
+                <p style="color: green;">This email is classified as <strong>NOT SPAM</strong>.</p>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>
